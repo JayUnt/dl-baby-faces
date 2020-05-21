@@ -20,35 +20,51 @@
 			float: none;
 			margin: 0 auto;
 			height: 400px;
-			width: 400px;
+			width: 600px;
 			display: none;
+			background-color: white;
 		}
 		
 		.person.visible{
 			display: block;
 		}
 		
-		img{
+		.baby-pic {
+			position: absolute;
+			right: 0;
+			max-width: 50%;
+			max-height: 100%;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		
+		.team-pic-container {
+		    position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			overflow: hidden;
+			
+			display: none;
+		}
+		
+		.team-pic { 
+			position: absolute;
+			top: 0;
+			left: 0;
 			height: 100%;
 		}
 		
-		.blocker{
-			position: absolute;
-			top: 59px;
-			left: 0;
-			height: 341px;
-			width: 199px;
-			z-index: 2;
-			background-color: white;			
-		}
-
 		.blockquote{
-			text-align: right;
+			position: absolute;
+			top: 100%;
+			right: 0;
 			display: none;			
 		}
 		
-		.active .blocker{
-			display: none;
+		.active .team-pic-container{
+			display: block;
 		}
 		
 		.active .blockquote{
@@ -62,54 +78,20 @@
 	<script>
 	$(function() {
 		let images = [
-			{ file: "AECJQExjyEXKg_1516285374936.jpg", name: "Cory" },
-			{ file: "0AHLvhSXj0QM8w_1516301696035.jpg", name: "Teryl" },
-			{ file: "2gEhCLNBCRW6EQ_1516285581652.jpg", name: "Julia" },
-			{ file: "3QFb8_uTbCyD3Q_1516301580473.jpg", name: "Mike S" },
-			{ file: "3QGyp_8O1XsDqA_1516285508431.jpg", name: "Ed" },
-			{ file: "7wGooMy9T3I5Vw_1516285826470.jpg", name: "Marisa" },
-			{ file: "aAG75NfNqCqn8A_1516301796285.jpg", name: "Yvette" },
-			{ file: "aQF5-NwLg40N4Q_1516301619005.jpg", name: "Nick" },
-			{ file: "BgEiv1uDI1qX0A_1516285452783.jpg", name: "Dennis" },
-			{ file: "BgGB8STQPZxqig_1516301743255.jpg", name: "Victor" },
-			{ file: "bwFfejgKskoxdA_1516285690858.jpg", name: "Jason" },
-			{ file: "dwEso7Lem1ERpA_1516285338327.jpg", name: "Carolyn" },
-			{ file: "eQFwlFHcWDfcpw_1516285789243.jpg", name: "Kajal" },
-			{ file: "ewEWESCwIZdd5A_1516301598381.jpg", name: "Nash" },
-			{ file: "EwH5Rfo0t6b1Mw_1516285537169.jpg", name: "Grace" },
-			{ file: "fwH2_DsFvwny0g_1516285483403.jpg", name: "Dave" },
-			{ file: "gQF4Js9sF3N-Dw_1516301766511.jpg", name: "Yasmine" },
-			{ file: "gQHKj1SvN4A3zg_1516285260044.jpg", name: "Beth" },
-			{ file: "hgEqLwy0UbMneA_1516285921113.jpg", name: "Mike Pip" },
-			{ file: "hQFz-VuuIWHvEw_1516285707976.jpg", name: "Kat" },
-			{ file: "JAHcBLGKIhK3yg_1516301712215.jpg", name: "Trish" },
-			{ file: "jQGGgl096vCajQ_1516285193795.jpg", name: "Alison" },
-			{ file: "lQFwEizAN3jLLw_1516285617857.jpg", name: "Jim C" },
-			{ file: "nwGp7IvYNj8Zhw_1516285239134.jpg", name: "Adrianna" },
-			{ file: "owHXlyqVBFKl1w_1516285744861.jpg", name: "Karen" },
-			{ file: "pwHWYVOnhtEenQ_1516285727407.jpg", name: "Kyle" },
-			{ file: "qgEZvGSuJ09H0A_1516301558525.jpg", name: "Mike R" },
-			{ file: "qgGx4NztJQWoNg_1516282735655.jpg", name: "Babu" },
-			{ file: "RQHFwa4u2LTw0g_1516285414807.jpg", name: "Danielle" },
-			{ file: "SgG056uocHp6Rw_1516285669755.jpg", name: "Jim M" },
-			{ file: "SwEz2fX0GYuJqQ_1516285313837.jpg", name: "Ben" },
-			{ file: "tgGVuYtyN65sTw_1516285639073.jpg", name: "Julie" },
-			{ file: "wAF3mbm_X67jJQ_1516285561239.jpg", name: "Joe" },
-			{ file: "xAHYugnwcNHkfA_1516301653401.jpg", name: "Rose" },
-			{ file: "yAEbVq8hGxIZeQ_1516285902860.jpg", name: "Mike Pal" },
-			{ file: "YwGr4TOy3rtduA_1516285857577.jpg", name: "Mark" },
-			{ file: "YwGr4TOy3rtduA_1516301636744.jpg", name: "Rob" },
-			{ file: "zQEiBuOcWGkvOQ_1516301672300.jpg", name: "Suzanne" },
-			{ file: "wGX49oCbKXfQQ_1516301735242.jpg", name: "Victor" },
-			{ file: "0AFAXG6pBrP8sA_1516314239868.jpg", name: "Gordon" },
-			{ file: "AwEA_u_P3WsFcw_1516314212379.jpg", name: "Bryan" },
-			{ file: "ewEWESCwIZdd5A_1516314198996.jpg", name: "Bill" },
-			{ file: "mAEFrdnXl6o-MA_1516314253095.jpg", name: "Jane" },
-			{ file: "mQH4fkj29zGiCg_1516314183737.jpg", name: "Lynn" },
-			{ file: "SwHt4gYft7po-w_1516314267391.jpg", name: "Scott" },
-			{ file: "ZQFXIGDSNau_tw_1516314166983.jpg", name: "Alex" },
-			{ file: "gGwB-4zKtEADw_1516314225198.jpg", name: "Derek" },
+			{ name: "Lynn Shaw", teamOffset: -1227 },
+			{ name: "Ben Milazzo", teamOffset: -2233 },
+			{ name: "Jason Unterman", teamOffset: -2649 },
+			{ name: "Karen Collopy", teamOffset: -258 },
+			{ name: "Nash Aliaga", teamOffset: -155 },
+			{ name: "Tiffon Turner", teamOffset: -3272 },
+			{ name: "Trish Russoniello", teamOffset: -4207 },
+			{ name: "Yasir Rather", teamOffset: -4937 },
 		];
+		
+		$('#total-count').text(images.length);
+		
+		let $seenCount = $('#seen-count');
+		$seenCount.text(0);
 		
 		let visiblePerson;
 		let alreadyPicked = [];
@@ -130,13 +112,20 @@
 			  }
 			);
 			
-			let img = $("<img/>").addClass("img-responsive").addClass("center-block").attr('src','compares/'+person.file);
+			let babyImg = $("<img/>").addClass("baby-pic").attr('src',`compares/${person.name} Baby Pic.jpg`);
+			
+			let teamImg = $('<div class="team-pic-container" />').append( 
+				$("<img/>")
+					.addClass("team-pic")
+					.attr('src','team-photo.png')
+					.css('left', `${person.teamOffset}px`)
+			);
 			let blocker = $("<div/>").addClass("blocker");
 			let blockquote = $("<blockquote/>").addClass('blockquote');
 			let footer = $('<footer/>').addClass("blockquote-footer").text(person.name);
 			blockquote.append(footer);
 						
-			div.append(img).append(blocker).append(blockquote);
+			div.append(babyImg).append(teamImg).append(blocker).append(blockquote);
 			container.append(div);			
 		});
 		
@@ -168,6 +157,8 @@
 		function showPerson(index){
 			alreadyPicked.push(index);
 			
+			$seenCount.text(alreadyPicked.length);
+			
 			visiblePerson = $('#'+index);
 			visiblePerson.addClass('visible');
 			
@@ -191,6 +182,9 @@
 	});
 	</script>
   
+	<div class="d-flex justify-content-center">
+		<h3><span id="seen-count"></span> of <span id="total-count"></span></h3>
+	</div>
 	
 	<div class="jumbotron">
 		<div id="container"></div>
